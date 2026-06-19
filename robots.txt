@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ganya212.github.io/leyusports-m-com-cn/sitemap.xml
