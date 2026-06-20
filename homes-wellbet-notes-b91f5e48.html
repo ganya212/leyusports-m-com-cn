@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>站点介绍 | 吉祥坊</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f5f9fc;
+            color: #1d2c3a;
+            line-height: 1.6;
+            padding: 0 16px;
+        }
+        /* 容器与间距 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 12px;
+        }
+        /* ===== 顶部导航 ===== */
+        .site-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0 10px;
+            border-bottom: 2px solid #d7e5ed;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo-icon {
+            background: #1d7a7a;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 18px;
+        }
+        .logo-text {
+            font-size: 1.4rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #1d5c6e;
+        }
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #2d4b5a;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 4px 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s;
+        }
+        .nav-links a:hover {
+            border-bottom-color: #2d9c9c;
+        }
+        /* ===== Hero / 首屏 ===== */
+        .hero {
+            margin: 32px 0 28px;
+            background: linear-gradient(145deg, #e1f0f3 0%, #cce3e9 100%);
+            border-radius: 28px;
+            padding: 40px 28px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .hero-text {
+            flex: 2 1 280px;
+        }
+        .hero-text h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #0a3847;
+            margin-bottom: 14px;
+            line-height: 1.2;
+        }
+        .hero-text p {
+            font-size: 1.1rem;
+            color: #1a4453;
+            max-width: 580px;
+            margin-bottom: 20px;
+        }
+        .hero-highlight {
+            display: inline-block;
+            background: #1d7a7a;
+            color: white;
+            border-radius: 40px;
+            padding: 8px 22px;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        .hero-illustration {
+            flex: 1 1 140px;
+            text-align: center;
+            font-size: 3.8rem;
+            opacity: 0.7;
+            color: #1a6b6b;
+        }
+        /* ===== 核心介绍卡片网格 ===== */
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #0b3b48;
+            margin: 48px 0 18px;
+            position: relative;
+            padding-left: 16px;
+        }
+        .section-title::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 6px;
+            height: 70%;
+            width: 5px;
+            background: #1d9a9a;
+            border-radius: 4px;
+        }
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+            margin: 24px 0 40px;
+        }
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 28px 20px 22px;
+            box-shadow: 0 6px 18px rgba(0, 30, 30, 0.05);
+            border: 1px solid #ddecf2;
+            transition: transform 0.2s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px rgba(25, 100, 100, 0.08);
+        }
+        .card-icon {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            color: #1d7a7a;
+        }
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            color: #003d4d;
+        }
+        .card p {
+            font-size: 0.95rem;
+            color: #2b4b58;
+        }
+        /* ===== 三个场景模块 (网格卡片, 但风格略不同) ===== */
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0 44px;
+        }
+        .scenario-item {
+            background: #edf6f8;
+            border-radius: 20px;
+            padding: 26px 18px 20px;
+            text-align: center;
+            border-left: 4px solid #1d9a9a;
+        }
+        .scenario-item .emoji-badge {
+            font-size: 2.6rem;
+            margin-bottom: 6px;
+        }
+        .scenario-item h4 {
+            font-size: 1.15rem;
+            margin-bottom: 6px;
+            color: #0c414f;
+        }
+        .scenario-item p {
+            font-size: 0.9rem;
+            color: #2e5665;
+        }
+        /* ===== 常见说明 / 摘要 ===== */
+        .faq-summary {
+            background: #e3f1f4;
+            border-radius: 28px;
+            padding: 30px 28px;
+            margin: 30px 0 48px;
+        }
+        .faq-summary h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #0a3d4a;
+            margin-bottom: 18px;
+        }
+        .faq-item {
+            margin-bottom: 18px;
+            border-bottom: 1px dashed #b9d5dd;
+            padding-bottom: 14px;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .faq-question {
+            font-weight: 600;
+            color: #005166;
+            margin-bottom: 4px;
+            display: flex;
+            gap: 8px;
+        }
+        .faq-question::before {
+            content: "▸";
+            color: #1d9a9a;
+        }
+        .faq-answer {
+            color: #2a4f5e;
+            padding-left: 22px;
+            font-size: 0.95rem;
+        }
+        /* ===== 内联链接 ===== */
+        .inline-link {
+            color: #1d6e6e;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted #4a9b9b;
+        }
+        .inline-link:hover {
+            border-bottom-style: solid;
+            color: #0a4d4d;
+        }
+        /* ===== 页脚 ===== */
+        .site-footer {
+            text-align: center;
+            padding: 28px 0 30px;
+            border-top: 1px solid #cde1e8;
+            font-size: 0.85rem;
+            color: #3b6575;
+        }
+        .site-footer a {
+            color: #1d7a7a;
+            text-decoration: none;
+        }
+        /* ===== 响应式 ===== */
+        @media (max-width: 600px) {
+            .site-header {
+                flex-direction: column;
+                align-items: start;
+            }
+            .nav-links {
+                gap: 14px;
+                margin-top: 6px;
+            }
+            .hero {
+                padding: 28px 18px;
+            }
+            .hero-text h1 {
+                font-size: 1.8rem;
+            }
+            .section-title {
+                font-size: 1.4rem;
+            }
+            .grid-cards {
+                grid-template-columns: 1fr;
+            }
+            .scenario-grid {
+                grid-template-columns: 1fr;
+            }
+            .faq-summary {
+                padding: 22px 16px;
+            }
+        }
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            .grid-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- 顶部导航 -->
+    <header class="site-header">
+        <div class="logo-area">
+            <span class="logo-icon">G</span>
+            <span class="logo-text">吉祥坊·简</span>
+        </div>
+        <nav class="nav-links">
+            <a href="#intro">介绍</a>
+            <a href="#scenarios">场景</a>
+            <a href="#faq">说明</a>
+        </nav>
+    </header>
+
+    <!-- Hero 区域 -->
+    <section class="hero">
+        <div class="hero-text">
+            <h1>站点 · 可信与便捷</h1>
+            <p>一个围绕信息展示与引导而设计的轻量入口，聚合常见服务说明，帮助新访客快速建立认知。核心关键词「吉祥坊」贯穿其中。</p>
+            <span class="hero-highlight">基于可靠介绍</span>
+        </div>
+        <div class="hero-illustration">⚙️</div>
+    </section>
+
+    <!-- 核心介绍：以站点说明书角度 -->
+    <section id="intro">
+        <h2 class="section-title">站点介绍</h2>
+        <div class="grid-cards">
+            <div class="card">
+                <div class="card-icon">🧭</div>
+                <h3>定位明确</h3>
+                <p>此站点围绕「吉祥坊」提供信息聚合与导航，内容侧重功能介绍与常见疑问解答，不涉及任何交易引导。</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🔐</div>
+                <h3>可信说明</h3>
+                <p>所有描述均基于公开资料与客观功能，无夸大承诺。如需深度了解，可参考 <a href="https://homes-wellbet.com" class="inline-link">吉祥坊</a> 网站内的详细资料。</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">📋</div>
+                <h3>信息结构</h3>
+                <p>采用分层卡片与场景模块，让访问者快速找到对应内容。页面轻量、移动端适配，适合碎片化阅读。</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🌐</div>
+                <h3>持续迭代</h3>
+                <p>未来将根据反馈增加更多常见场景说明，保持页面简洁的同时扩展有用内容。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 三个场景模块 -->
+    <section id="scenarios">
+        <h2 class="section-title">常见使用场景</h2>
+        <div class="scenario-grid">
+            <div class="scenario-item">
+                <div class="emoji-badge">📱</div>
+                <h4>移动端浏览</h4>
+                <p>优化了按钮与卡片间距，手指点触区域友好。在手机上查看介绍与说明更流畅。</p>
+            </div>
+            <div class="scenario-item">
+                <div class="emoji-badge">🖥️</div>
+                <h4>桌面端查阅</h4>
+                <p>网格布局清晰展示多个模块，配合蓝绿色点缀提升阅读体验，适合快速扫描信息。</p>
+            </div>
+            <div class="scenario-item">
+                <div class="emoji-badge">📚</div>
+                <h4>信息索引</h4>
+                <p>对于新访客，可通过场景分类迅速定位到所需说明，减少查找成本。</p>
+            </div>
+        </div>
+        <p style="margin-top: -6px; color: #2b5a68; font-size: 0.95rem; background: #e9f2f5; padding: 10px 16px; border-radius: 40px; display: inline-block;">
+            ⚡ 更多场景可探索 <a href="https://homes-wellbet.com" class="inline-link">吉祥坊</a> 网站内的具体分区。
+        </p>
+    </section>
+
+    <!-- 常见说明 / FAQ 摘要 -->
+    <section id="faq" class="faq-summary">
+        <h3>❓ 常见说明摘要</h3>
+        <div class="faq-item">
+            <div class="faq-question">吉祥坊是什么类型的站点？</div>
+            <div class="faq-answer">一个提供信息展示与功能引导的网站，内容围绕名称「吉祥坊」组织，风格偏向实用说明与引导。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">页面上为什么没有直接的注册 / 登录入口？</div>
+            <div class="faq-answer">本页面为介绍性入口，旨在说明站点的背景与常见问题。如需进一步操作，可前往 <a href="https://homes-wellbet.com" class="inline-link">吉祥坊</a> 主站。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">信息是否可靠？</div>
+            <div class="faq-answer">内容均基于客观功能与通用描述编写，不包含诱导或误导性表述。建议以官网正式信息为准。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">移动端适配效果如何？</div>
+            <div class="faq-answer">页面采用弹性网格与响应式设计，在手机、平板、桌面均能获得一致的浏览体验。</div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="site-footer">
+        <p>基于介绍与可信说明 · 页面内容仅为示例 · 核心关键词 <a href="https://homes-wellbet.com" class="inline-link">吉祥坊</a></p>
+        <p style="margin-top: 8px; color: #4f7a87;">— 无诱导承诺 · 客观陈述 —</p>
+    </footer>
+</div>
+</body>
+</html>
