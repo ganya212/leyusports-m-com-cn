@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B体育 · 轻量导航介绍页</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #f7f4f0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+      color: #2c2b29;
+      line-height: 1.6;
+      padding: 0 1.5rem;
+    }
+    .page-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2.5rem 0 4rem;
+    }
+    /* 顶部导航 */
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid #ddd9d2;
+      margin-bottom: 2.8rem;
+    }
+    .brand {
+      font-weight: 550;
+      font-size: 1.2rem;
+      letter-spacing: 0.02em;
+      color: #3b3a37;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      font-size: 0.95rem;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #5a5854;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+    .nav-links a:hover {
+      border-bottom-color: #b0a89b;
+      color: #1f1e1b;
+    }
+    .nav-links a.highlight-link {
+      color: #3b3a37;
+      font-weight: 480;
+      border-bottom: 1px solid #cac2b6;
+    }
+    .nav-links a.highlight-link:hover {
+      border-bottom-color: #8f8678;
+    }
+
+    /* hero 区域 */
+    .hero {
+      margin-bottom: 3.2rem;
+    }
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 430;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+      margin-bottom: 1.2rem;
+      color: #1f1e1b;
+    }
+    .hero p {
+      font-size: 1.05rem;
+      color: #4a4844;
+      max-width: 70ch;
+      margin-bottom: 0.4rem;
+    }
+
+    /* 引用块 / 提示框 */
+    .notice-block {
+      background: #ede9e2;
+      border-left: 4px solid #c3b9ac;
+      padding: 1.4rem 1.6rem;
+      margin: 2.2rem 0 2.8rem;
+      border-radius: 0 6px 6px 0;
+    }
+    .notice-block p {
+      margin-bottom: 0.35rem;
+      font-size: 0.98rem;
+      color: #3e3c38;
+    }
+    .notice-block strong {
+      font-weight: 540;
+      color: #262421;
+    }
+
+    /* 场景模块 —— 三块卡片 */
+    .scenes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+      margin: 2.5rem 0 3rem;
+    }
+    .scene-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 1.8rem 1.5rem 2rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02), 0 4px 14px rgba(0,0,0,0.03);
+      transition: transform 0.1s ease;
+    }
+    .scene-card:hover {
+      transform: translateY(-2px);
+    }
+    .scene-card h3 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+      color: #2f2d29;
+      letter-spacing: 0.01em;
+    }
+    .scene-card p {
+      font-size: 0.94rem;
+      color: #55524d;
+      margin-bottom: 0.2rem;
+    }
+    .scene-card .card-footnote {
+      font-size: 0.85rem;
+      color: #7f7a72;
+      margin-top: 0.8rem;
+      border-top: 1px dashed #e0dbd3;
+      padding-top: 0.6rem;
+    }
+
+    /* 常见说明 / FAQ 摘要 */
+    .faq-summary {
+      margin: 3rem 0 2.2rem;
+    }
+    .faq-summary h2 {
+      font-weight: 440;
+      font-size: 1.5rem;
+      margin-bottom: 1.2rem;
+      color: #2b2a27;
+      border-bottom: 1px solid #d6d0c7;
+      padding-bottom: 0.6rem;
+    }
+    .faq-item {
+      margin-bottom: 1rem;
+    }
+    .faq-item .q {
+      font-weight: 490;
+      color: #2b2a27;
+      margin-bottom: 0.1rem;
+    }
+    .faq-item .a {
+      color: #4f4c48;
+      font-size: 0.95rem;
+      padding-left: 0.2rem;
+    }
+
+    /* 底部 */
+    .footer-note {
+      margin-top: 3.5rem;
+      padding-top: 1.8rem;
+      border-top: 1px solid #d6d0c7;
+      font-size: 0.9rem;
+      color: #6d6962;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+    .footer-note a {
+      color: #4f4c48;
+      text-decoration: underline 1px solid #b2aba1;
+      text-underline-offset: 3px;
+    }
+    .footer-note a:hover {
+      text-decoration-color: #736c62;
+    }
+
+    /* 响应式 */
+    @media (max-width: 700px) {
+      .top-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+      }
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 1.2rem 1.8rem;
+      }
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+      .scenes-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+      .footer-note {
+        flex-direction: column;
+        gap: 0.3rem;
+      }
+    }
+    @media (max-width: 480px) {
+      body { padding: 0 1rem; }
+      .page-wrap { padding: 1.5rem 0 2.5rem; }
+      .hero h1 { font-size: 1.5rem; }
+      .notice-block { padding: 1rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+  <!-- 顶部导航 -->
+  <header class="top-nav">
+    <span class="brand">B体育</span>
+    <div class="nav-links">
+      <a href="#">首页</a>
+      <a href="#">场景</a>
+      <a href="#">说明</a>
+      <a href="https://cn-page-bsports.com" class="highlight-link">B体育</a>
+    </div>
+  </header>
+
+  <!-- hero 介绍 -->
+  <section class="hero">
+    <h1>再次访问 · 持续关注 · 轻量索引</h1>
+    <p>对于经常使用 <a href="https://cn-page-bsports.com" style="color: #3b3a37; text-decoration: underline 1px solid #b2aba1; text-underline-offset: 3px;">B体育</a> 的用户，一个稳定的访问路径和清晰的模块认知，比任何时候都更重要。本页作为结构化的收藏辅助页，帮助你在不同设备上快速定位核心方向。</p>
+  </section>
+
+  <!-- 提示框：收藏与回访 -->
+  <div class="notice-block">
+    <p><strong>▸ 保持访问连贯性</strong> —— 将 <a href="https://cn-page-bsports.com" style="color: #3e3c38; text-decoration: underline 1px solid #9f968b; text-underline-offset: 2px;">B体育</a> 加入浏览器书签，或直接记住当前介绍页的定位方式。每次返回都能直接触达。</p>
+    <p><strong>▸ 场景化索引</strong> —— 下方三个模块整理了最常见的访问意图，可根据需求直接跳转对应版块。</p>
+  </div>
+
+  <!-- 三个场景模块 -->
+  <div class="scenes-grid">
+    <div class="scene-card">
+      <h3>📌 日常资讯与动态</h3>
+      <p>快速浏览整体更新、赛事摘要或平台公告。适合每日短时访问，保持对核心信息的跟进。</p>
+      <div class="card-footnote">推荐场景：通勤 · 午休 · 碎片时间</div>
+    </div>
+    <div class="scene-card">
+      <h3>📂 功能与模块回顾</h3>
+      <p>当需要查找特定分类、活动入口或历史记录时，通过固定导航再次定位。减少重复寻找的步骤。</p>
+      <div class="card-footnote">推荐场景：周末整理 · 深度使用</div>
+    </div>
+    <div class="scene-card">
+      <h3>🔁 跨设备持续访问</h3>
+      <p>在电脑、平板或手机之间切换时，借助简介页的统一步调，快速回到熟悉的浏览节奏。</p>
+      <div class="card-footnote">推荐场景：设备切换 · 外出临时使用</div>
+    </div>
+  </div>
+
+  <!-- 常见说明 (FAQ 摘要) -->
+  <div class="faq-summary">
+    <h2>常见说明 · 简洁版</h2>
+    <div class="faq-item">
+      <div class="q">❓ 为什么选择再次访问本页？</div>
+      <div class="a">本页为轻量化导航介绍，聚焦于“从哪里开始”和“如何保持访问习惯”。不承载复杂功能，仅作索引和提示。</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">❓ 页面内容是否会更新？</div>
+      <div class="a">场景模块与说明基于通用访问模式整理，长期有效。如需了解最新动态，建议直接通过导航链接访问 <a href="https://cn-page-bsports.com" style="color: #4f4c48; text-decoration: underline 1px solid #b2aba1;">B体育</a> 主站。</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">❓ 如何收藏本页？</div>
+      <div class="a">浏览器中按 Ctrl+D (Windows) 或 Cmd+D (Mac) 即可添加书签。建议将名称设为「B体育 · 导航」方便识别。</div>
+    </div>
+  </div>
+
+  <!-- 底部 -->
+  <footer class="footer-note">
+    <span>索引页 · 内容仅供导航参考</span>
+    <span>主站：<a href="https://cn-page-bsports.com">B体育</a></span>
+  </footer>
+</div>
+</body>
+</html>
