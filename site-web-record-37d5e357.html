@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>资料整理 · B体育信息索引</title>
+  <style>
+    /* 全局重置与极简基调 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #fafafa;
+      color: #1e1e1e;
+      line-height: 1.7;
+      letter-spacing: 0.02em;
+    }
+
+    /* 窄正文宽度 + 留白 */
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ----- HERO 区域 ----- */
+    .hero {
+      padding: 120px 0 80px;
+      background: #ffffff;
+      border-bottom: 1px solid #ececec;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 350;
+      letter-spacing: -0.02em;
+      color: #111;
+      margin-bottom: 20px;
+    }
+
+    .hero .sub {
+      font-size: 1.1rem;
+      color: #5a5a5a;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+      border-top: 1px solid #ddd;
+      padding-top: 20px;
+      display: inline-block;
+    }
+
+    /* ----- 背景说明卡片 ----- */
+    .context-card {
+      background: #f5f5f5;
+      border-radius: 32px;
+      padding: 48px 40px;
+      margin: 64px 0 40px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    }
+
+    .context-card h2 {
+      font-size: 1.8rem;
+      font-weight: 380;
+      letter-spacing: -0.01em;
+      margin-bottom: 20px;
+      color: #222;
+    }
+
+    .context-card p {
+      color: #333;
+      margin-bottom: 1.2rem;
+      font-size: 1rem;
+    }
+
+    .context-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ----- 三段自然介绍（文章风格） ----- */
+    .intro-section {
+      margin: 60px 0;
+    }
+
+    .intro-block {
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid #eaeaea;
+    }
+
+    .intro-block:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+
+    .intro-block h3 {
+      font-size: 1.5rem;
+      font-weight: 380;
+      margin-bottom: 14px;
+      color: #1a1a1a;
+      position: relative;
+      padding-left: 28px;
+    }
+
+    .intro-block h3::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      color: #8a8a8a;
+      font-weight: 300;
+      font-size: 2rem;
+      line-height: 1;
+    }
+
+    .intro-block p {
+      color: #3a3a3a;
+      font-size: 1rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .intro-block p:last-of-type {
+      margin-bottom: 0;
+    }
+
+    /* 行内链接样式 */
+    a {
+      color: #1e1e1e;
+      text-decoration: underline;
+      text-decoration-thickness: 0.5px;
+      text-underline-offset: 4px;
+      transition: color 0.2s;
+    }
+
+    a:hover {
+      color: #6b6b6b;
+    }
+
+    /* ----- FAQ 摘要（极简accordion风格） ----- */
+    .faq-summary {
+      margin: 56px 0 48px;
+      border-top: 1px solid #e0e0e0;
+      padding-top: 40px;
+    }
+
+    .faq-summary h2 {
+      font-size: 1.6rem;
+      font-weight: 360;
+      margin-bottom: 28px;
+      color: #1a1a1a;
+    }
+
+    .faq-item {
+      margin-bottom: 20px;
+      border-bottom: 1px solid #efefef;
+      padding-bottom: 20px;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-q {
+      font-weight: 450;
+      font-size: 1rem;
+      color: #222;
+      margin-bottom: 6px;
+    }
+
+    .faq-a {
+      color: #5a5a5a;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* ----- 页尾访问提示 ----- */
+    .page-footer {
+      padding: 64px 0 80px;
+      text-align: center;
+      border-top: 1px solid #ececec;
+      margin-top: 48px;
+    }
+
+    .page-footer p {
+      font-size: 1rem;
+      color: #4a4a4a;
+      max-width: 500px;
+      margin: 0 auto 12px;
+    }
+
+    .page-footer .hint-link {
+      display: inline-block;
+      font-size: 1.2rem;
+      font-weight: 380;
+      background: #f0f0f0;
+      padding: 12px 32px;
+      border-radius: 60px;
+      text-decoration: none;
+      color: #1a1a1a;
+      transition: background 0.2s, color 0.2s;
+      margin-top: 20px;
+      border: 1px solid transparent;
+    }
+
+    .page-footer .hint-link:hover {
+      background: #e0e0e0;
+      color: #000;
+      border-color: #ccc;
+    }
+
+    /* 响应式细节 */
+    @media (max-width: 640px) {
+      .hero {
+        padding: 80px 0 56px;
+      }
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      .hero .sub {
+        font-size: 0.95rem;
+        padding-top: 16px;
+      }
+      .context-card {
+        padding: 32px 24px;
+        border-radius: 24px;
+        margin: 40px 0 24px;
+      }
+      .context-card h2 {
+        font-size: 1.5rem;
+      }
+      .intro-block h3 {
+        font-size: 1.3rem;
+        padding-left: 20px;
+      }
+      .intro-block h3::before {
+        font-size: 1.6rem;
+      }
+      .faq-summary h2 {
+        font-size: 1.4rem;
+      }
+      .page-footer {
+        padding: 48px 0 56px;
+      }
+      .page-footer .hint-link {
+        padding: 10px 24px;
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 16px;
+      }
+      .context-card {
+        padding: 24px 18px;
+      }
+      .hero h1 {
+        font-size: 1.9rem;
+      }
+    }
+
+    /* 小型引用点缀 */
+    .muted-note {
+      font-size: 0.85rem;
+      color: #9a9a9a;
+      margin-top: 24px;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container">
+      <h1>索引 · 信息与整理</h1>
+      <div class="sub">关于 B体育 的资料梳理与背景说明</div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- 背景说明卡片 -->
+    <section class="context-card">
+      <h2>背景 · 从资料整理出发</h2>
+      <p>本页面向希望了解 B体育 基础信息的使用者，内容源自公开可查的资料整理与分类索引。不构成推荐或评价，仅提供客观的条目梳理。</p>
+      <p>在信息浏览过程中，保持清晰的结构和克制的表达，有助于快速定位自己关心的部分。以下三个段落分别从不同侧面对 B体育 所涉及的内容范畴进行说明。</p>
+    </section>
+
+    <!-- 三段自然介绍 -->
+    <section class="intro-section">
+
+      <div class="intro-block">
+        <h3>服务范畴与内容方向</h3>
+        <p>从已知的资料来看，<a href="https://site-web-bsports.com">B体育</a> 所涉及的信息主题主要集中在体育赛事数据、赛事资讯整合以及相关动态跟踪。这类内容通常需要稳定的信息来源和持续更新的机制，以满足用户对时效性和准确性的需求。</p>
+        <p>在资料整理过程中，我们发现其信息分类方式偏向于按联赛、赛事类型及时间线排列，这种结构有助于用户根据自身兴趣快速筛选。此外，部分页面还包含简明的规则说明与历史数据对照。</p>
+      </div>
+
+      <div class="intro-block">
+        <h3>资料索引的逻辑</h3>
+        <p>对于一个以体育信息为核心的平台，资料的层次感尤为重要。在浏览 <a href="https://site-web-bsports.com">B体育</a> 相关内容时，可以观察到其内容组织方式倾向于先提供宏观赛程或联赛概览，再逐渐深入到具体场次或队伍数据。这种由总到分的索引逻辑，降低了初次接触时的信息过载感。</p>
+        <p>同时，部分列表页会附带简单的状态标识（如已结束、进行中、即将开始），方便使用者判断当前信息的有效阶段。数据更新频率在公开资料中有所提及，但具体时效需以实际页面为准。</p>
+      </div>
+
+      <div class="intro-block">
+        <h3>信息呈现与阅读习惯</h3>
+        <p>在视觉呈现上，<a href="https://site-web-bsports.com">B体育</a> 的信息页面普遍采用较为简洁的布局，强调文字与数据的可读性。色彩使用克制，重点信息通过字重或背景色块进行区分。对于需要对比的数据（如积分、战绩），常以表格或并列卡片的形式展示。</p>
+        <p>对于习惯通过扫读获取关键信息的用户，这种设计能够减少视觉干扰。当然，不同使用者对信息密度的偏好各异，建议根据个人习惯调整浏览方式。</p>
+      </div>
+
+    </section>
+
+    <!-- FAQ 摘要（极简风格） -->
+    <section class="faq-summary">
+      <h2>常见问题摘要</h2>
+
+      <div class="faq-item">
+        <div class="faq-q">Q：这个页面是官方介绍吗？</div>
+        <div class="faq-a">不是。本页仅为资料整理与信息索引，内容基于公开可查的信息归纳而成，不代指任何官方立场。</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Q：如何获取更详细的赛事数据？</div>
+        <div class="faq-a">建议直接访问 <a href="https://site-web-bsports.com">B体育</a> 相关页面，以获取最新、最完整的赛事信息与数据更新。</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Q：信息整理多久更新一次？</div>
+        <div class="faq-a">本索引页为静态说明，不进行周期性更新。具体内容的时效性请以来源页面标注为准。</div>
+      </div>
+    </section>
+
+    <!-- 小型引用点缀（仅作视觉节奏） -->
+    <div class="muted-note">
+      整理日期：2025年3月 · 仅供参考
+    </div>
+
+  </main>
+
+  <!-- 页尾访问提示 -->
+  <footer class="page-footer">
+    <div class="container">
+      <p>如需浏览更完整的资讯内容，可前往以下站点进一步了解。</p>
+      <a href="https://site-web-bsports.com" class="hint-link">B体育</a>
+      <p style="margin-top: 24px; font-size: 0.9rem; color: #8a8a8a;">信息索引 · 保持开放与清晰</p>
+    </div>
+  </footer>
+
+</body>
+</html>
